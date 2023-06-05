@@ -1,14 +1,20 @@
-import React from "react"
-import Greeter from "./components/Greeter"
+import {useState} from "react"
+import ShoppingList from "./components/ShoppingList"
+import ShoppingListForm from "./components/ShoppingListForm"
+import Item from "./models/item"
 import "./App.css"
 
 function App() {
+  const [items, setItems ] = useState<Item[]>([])
+  const addItem = (product: string) => {
+    console.log("made to the app component")
+    console.log(product)
+  }
+
   return (
     <div className="App">
-      <Greeter person="Peter"/>
-      <Greeter person="James"/>
-      <Greeter person="John"/>
-
+      {<ShoppingList items={items} />}
+      <ShoppingListForm onAddItem={addItem}/>
     </div>
   )
 }
